@@ -1,1781 +1,246 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" id="top">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Katta Karthik — AI Engineer & Open Source Contributor</title>
-  <meta name="description" content="Portfolio of Katta Karthik — AI Engineer & Upstream Open Source Contributor (LangChain, CopilotKit, OpenHands). Specialized in Autonomous Multi-Agent Systems, Production RAG, and Self-Healing Analytics.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#131119">
+  <title>Katta Karthik | AI Agent Engineer</title>
+  <meta name="description" content="Katta Karthik builds autonomous AI agents that work 24/7, coordinate as a team, and improve over time. LangChain, LangGraph, and Deep Agents.">
   <meta name="author" content="Katta Karthik">
   <link rel="canonical" href="https://katta-karthik.github.io/">
-
-  <!-- Favicon (Inline SVG for zero network request latency) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230f172a'/><text x='16' y='22' font-family='monospace' font-weight='800' font-size='18' fill='%2338bdf8' text-anchor='middle'>K</text></svg>">
-
-  <!-- Open Graph & Social Sharing -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://katta-karthik.github.io/">
-  <meta property="og:title" content="Katta Karthik — AI Engineer">
-  <meta property="og:description" content="AI Engineer specializing in Autonomous Multi-Agent Systems, Production RAG Platforms, and Self-Healing Analytics. Integrated M.Tech graduate from Vellore Institute of Technology.">
+  <meta property="og:title" content="Katta Karthik | AI Agent Engineer">
+  <meta property="og:description" content="Katta Karthik builds autonomous AI agents that work 24/7, coordinate as a team, and improve over time. LangChain, LangGraph, and Deep Agents.">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Katta Karthik — AI Engineer">
-  <meta name="twitter:description" content="AI Engineer specializing in Autonomous Multi-Agent Systems, Production RAG Platforms, and Self-Healing Analytics.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle fill='%23131119' stroke='%23e5f676' cx='20' cy='20' r='18'/%3E%3Ctext x='20' y='28' text-anchor='middle' fill='%23e5f676' font-size='24' font-family='Georgia'%3EK%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 
-  <meta name="theme-color" content="#090d16">
-
-  <!-- Speed Optimizations: DNS Prefetch & Lean Fonts -->
-  <link rel="dns-prefetch" href="//fonts.googleapis.com">
-  <link rel="dns-prefetch" href="//fonts.gstatic.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #090d16;
-      --bg-surface: #0f172a;
-      --bg-card: #131c31;
-      --bg-card-hover: #17223b;
-      --border: rgba(255, 255, 255, 0.08);
-      --border-focus: rgba(56, 189, 248, 0.4);
-      --text: #f1f5f9;
-      --text-muted: #94a3b8;
-      --text-faint: #64748b;
-      --accent: #38bdf8;
-      --accent-glow: rgba(56, 189, 248, 0.15);
-      --emerald: #34d399;
-      --emerald-glow: rgba(52, 211, 153, 0.15);
-      --violet: #a78bfa;
-      --violet-glow: rgba(167, 139, 250, 0.15);
-      --amber: #fbbf24;
-      --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      --mono: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: var(--font);
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-      position: relative;
-    }
-
-    /* GPU-accelerated fixed ambient layer (zero repaint lag on scroll) */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: 
-        radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.08) 0%, transparent 45%),
-        radial-gradient(circle at 100% 30%, rgba(167, 139, 250, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 0% 70%, rgba(52, 211, 153, 0.04) 0%, transparent 40%);
-      pointer-events: none;
-      z-index: -1;
-      transform: translateZ(0);
-    }
-
-    ::selection { background: rgba(56, 189, 248, 0.25); color: #fff; }
-    a { color: var(--accent); text-decoration: none; transition: all 0.2s ease; }
-    a:hover { color: #bae6fd; }
-
-    .wrap {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* ── NAVIGATION ── */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(9, 13, 22, 0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-bar {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 56px;
-    }
-
-    .nav-logo {
-      font-family: var(--mono);
-      font-weight: 700;
-      font-size: 0.95rem;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .nav-logo span { color: var(--accent); }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-family: var(--mono);
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      padding: 6px 14px;
-      border-radius: 6px;
-      transition: all 0.2s ease;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--accent);
-      background: rgba(56, 189, 248, 0.08);
-      border-color: rgba(56, 189, 248, 0.2);
-    }
-
-    .nav-links .num {
-      color: var(--accent);
-      margin-right: 4px;
-      font-size: 0.75rem;
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .btn-resume {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--accent);
-      background: rgba(56, 189, 248, 0.08);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      padding: 6px 14px;
-      border-radius: 6px;
-      transition: all 0.2s ease;
-    }
-
-    .btn-resume:hover {
-      background: rgba(56, 189, 248, 0.16);
-      border-color: var(--accent);
-      color: #fff;
-      transform: translateY(-1px);
-    }
-
-    .mob-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--text);
-      cursor: pointer;
-      padding: 6px;
-    }
-
-    /* ── HERO ── */
-    .hero {
-      padding: 88px 0 24px;
-    }
-
-    .hero-content {
-      max-width: 820px;
-    }
-
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      font-weight: 500;
-      color: var(--emerald);
-      background: rgba(52, 211, 153, 0.08);
-      border: 1px solid rgba(52, 211, 153, 0.25);
-      padding: 5px 14px;
-      border-radius: 999px;
-      margin-bottom: 16px;
-    }
-
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--emerald);
-      box-shadow: 0 0 10px var(--emerald);
-      animation: pulse 2s infinite ease-in-out;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
-    }
-
-    .hero-title {
-      font-size: clamp(2.2rem, 5vw, 3.4rem);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1.12;
-      color: #fff;
-      margin-bottom: 14px;
-    }
-
-    .hero-title .name-highlight {
-      background: linear-gradient(135deg, #ffffff 40%, var(--accent) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1.15rem, 2.5vw, 1.45rem);
-      font-weight: 600;
-      color: var(--text-muted);
-      letter-spacing: -0.02em;
-      line-height: 1.35;
-      margin-bottom: 16px;
-    }
-
-    .hero-subtitle span {
-      color: var(--text);
-    }
-
-    .hero-desc {
-      font-size: 1.02rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 24px;
-      max-width: 660px;
-    }
-
-    .hero-desc strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.86rem;
-      font-weight: 600;
-      padding: 9px 18px;
-      border-radius: 8px;
-      transition: all 0.2s ease;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #090d16;
-      border: 1px solid var(--accent);
-      box-shadow: 0 4px 16px rgba(56, 189, 248, 0.25);
-    }
-
-    .btn-primary:hover {
-      background: #7dd3fc;
-      color: #090d16;
-      box-shadow: 0 6px 22px rgba(56, 189, 248, 0.35);
-      transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.04);
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.2);
-      color: #fff;
-      transform: translateY(-2px);
-    }
-
-    /* ── SECTIONS (TIGHT VERTICAL FLOW) ── */
-    .section {
-      padding: 22px 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      scroll-margin-top: 62px;
-    }
-
-    .section-head {
-      margin-bottom: 12px;
-    }
-
-    .section-tag {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--accent);
-      display: inline-block;
-      margin-bottom: 6px;
-    }
-
-    .section-title {
-      font-size: 1.85rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: #fff;
-    }
-
-    .section-sub {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-top: 6px;
-      max-width: 600px;
-    }
-
-    /* ── ABOUT (COMPACT HORIZONTAL CARD) ── */
-    .about-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 20px 24px;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.25s ease;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    }
-
-    .about-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), transparent 80%);
-      opacity: 0.9;
-    }
-
-    .about-card:hover {
-      border-color: rgba(255, 255, 255, 0.15);
-      background: var(--bg-card-hover);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
-      transform: translateY(-2px);
-    }
-
-    .about-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
-
-    .about-tag {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--accent);
-      background: var(--accent-glow);
-      padding: 3px 8px;
-      border-radius: 4px;
-      display: inline-block;
-      margin-bottom: 4px;
-    }
-
-    .about-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: -0.02em;
-    }
-
-    .about-summary {
-      font-size: 0.92rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-      margin-bottom: 14px;
-    }
-
-    .about-summary strong { color: var(--text); font-weight: 600; }
-
-    .about-pillars {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px 14px;
-      margin-top: 14px;
-      padding-top: 14px;
-      border-top: 1px solid var(--border);
-    }
-
-    .about-pillar {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 8px;
-      padding: 10px 14px;
-      transition: all 0.2s ease;
-    }
-
-    .about-pillar:hover {
-      border-color: rgba(56, 189, 248, 0.25);
-      background: rgba(56, 189, 248, 0.03);
-      transform: translateY(-1px);
-    }
-
-    .pillar-label {
-      font-family: var(--mono);
-      font-size: 0.74rem;
-      font-weight: 700;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 4px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .pillar-text {
-      font-size: 0.84rem;
-      color: var(--text-muted);
-      line-height: 1.45;
-    }
-
-    .pillar-text strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .bullet-accent { background: var(--accent); }
-
-    .badge-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: var(--mono);
-      font-size: 0.76rem;
-      color: var(--text-muted);
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border);
-      padding: 4px 10px;
-      border-radius: 6px;
-    }
-
-        .badge-pill strong { color: var(--text); }
-
-    /* ── OPEN SOURCE ── */
-    .os-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .os-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 24px 26px;
-      transition: all 0.25s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .os-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      opacity: 0.9;
-    }
-
-    .os-lead {
-      grid-column: 1 / -1;
-      background: linear-gradient(135deg, rgba(167, 139, 250, 0.06) 0%, rgba(56, 189, 248, 0.04) 100%), var(--bg-card);
-      border-color: rgba(167, 139, 250, 0.3);
-    }
-
-    .os-lead::before { background: linear-gradient(90deg, var(--violet), var(--accent)); }
-    .os-emerald::before { background: linear-gradient(90deg, var(--emerald), transparent 80%); }
-    .os-accent::before { background: linear-gradient(90deg, var(--accent), transparent 80%); }
-    .os-violet::before { background: linear-gradient(90deg, var(--violet), transparent 80%); }
-
-    .os-card:hover {
-      border-color: rgba(255, 255, 255, 0.2);
-      background: var(--bg-card-hover);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
-      transform: translateY(-2px);
-    }
-
-    .os-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
-
-    .os-repo {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #fff;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .os-badge-merged {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--violet);
-      background: var(--violet-glow);
-      border: 1px solid rgba(167, 139, 250, 0.3);
-      padding: 3px 10px;
-      border-radius: 999px;
-    }
-
-    .os-badge-review {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--emerald);
-      background: var(--emerald-glow);
-      border: 1px solid rgba(52, 211, 153, 0.3);
-      padding: 3px 10px;
-      border-radius: 999px;
-    }
-
-    .os-desc {
-      font-size: 0.92rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-      margin-bottom: 14px;
-    }
-
-    .os-desc strong { color: var(--text); font-weight: 600; }
-
-    .os-link-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      flex-wrap: wrap;
-    }
-
-    /* ── PROJECTS ── */
-    .project-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-    }
-
-    .project-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 26px 28px;
-      transition: all 0.25s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .project-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      opacity: 0.9;
-    }
-
-    .card-violet::before { background: linear-gradient(90deg, var(--violet), transparent 80%); }
-    .card-emerald::before { background: linear-gradient(90deg, var(--emerald), transparent 80%); }
-    .card-amber::before { background: linear-gradient(90deg, var(--amber), transparent 80%); }
-
-    .project-card:hover {
-      border-color: rgba(255, 255, 255, 0.15);
-      background: var(--bg-card-hover);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
-      transform: translateY(-2px);
-    }
-
-    .project-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 14px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
-
-    .project-tag {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      padding: 3px 8px;
-      border-radius: 4px;
-      display: inline-block;
-      margin-bottom: 6px;
-    }
-
-    .tag-violet { color: var(--violet); background: var(--violet-glow); }
-    .tag-emerald { color: var(--emerald); background: var(--emerald-glow); }
-    .tag-amber { color: var(--amber); background: rgba(251, 191, 36, 0.12); }
-
-    .project-title {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: -0.02em;
-    }
-
-    .project-links {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .proj-btn {
-      font-family: var(--mono);
-      font-size: 0.76rem;
-      font-weight: 600;
-      padding: 6px 12px;
-      border-radius: 6px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s ease;
-    }
-
-    .proj-btn-demo {
-      background: var(--accent);
-      color: #090d16;
-    }
-
-    .proj-btn-demo:hover {
-      background: #7dd3fc;
-      color: #090d16;
-      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
-    }
-
-    .proj-btn-code {
-      color: var(--text-muted);
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.02);
-    }
-
-    .proj-btn-code:hover {
-      color: #fff;
-      border-color: rgba(255, 255, 255, 0.25);
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    .project-summary {
-      font-size: 0.94rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 16px;
-    }
-
-    .project-summary strong {
-      color: var(--text);
-    }
-
-    .project-highlights {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px 14px;
-      margin-bottom: 18px;
-    }
-
-    .highlight-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      line-height: 1.45;
-    }
-
-    .highlight-bullet {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      margin-top: 7px;
-      flex-shrink: 0;
-    }
-
-    .bullet-violet { background: var(--violet); }
-    .bullet-emerald { background: var(--emerald); }
-    .bullet-amber { background: var(--amber); }
-
-    .project-tech {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
-    }
-
-    .tech-pill {
-      font-family: var(--mono);
-      font-size: 0.74rem;
-      color: var(--text-faint);
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      padding: 3px 8px;
-      border-radius: 4px;
-    }
-
-    /* ── EXPERIENCE & EDUCATION ── */
-    .journey-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-    }
-
-    .journey-col h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 18px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .timeline-item {
-      position: relative;
-      padding-left: 20px;
-      margin-bottom: 22px;
-      border-left: 2px solid var(--border);
-    }
-
-    .timeline-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -6px;
-      top: 6px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: 2px solid var(--bg);
-      box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
-    }
-
-    .timeline-period {
-      font-family: var(--mono);
-      font-size: 0.74rem;
-      font-weight: 600;
-      color: var(--accent);
-      margin-bottom: 2px;
-    }
-
-    .timeline-role {
-      font-size: 0.98rem;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .timeline-org {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-
-    .timeline-org a {
-      color: var(--accent);
-    }
-
-    .timeline-text {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    .timeline-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-family: var(--mono);
-      font-size: 0.76rem;
-      font-weight: 600;
-      color: var(--emerald);
-      background: var(--emerald-glow);
-      padding: 2px 8px;
-      border-radius: 4px;
-      margin-top: 6px;
-    }
-
-    /* ── SKILLS ── */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    .skill-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px 22px;
-      transition: all 0.2s ease;
-    }
-
-    .skill-card:hover {
-      border-color: rgba(56, 189, 248, 0.3);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    .skill-card-head {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 4px;
-    }
-
-    .skill-card-head h4 {
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .skill-card-desc {
-      font-size: 0.78rem;
-      color: var(--text-faint);
-      margin-bottom: 12px;
-    }
-
-    .skill-pill-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .skill-pill {
-      font-family: var(--mono);
-      font-size: 0.74rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border);
-      padding: 3px 8px;
-      border-radius: 5px;
-      transition: all 0.15s ease;
-    }
-
-    .skill-pill:hover {
-      color: #fff;
-      border-color: var(--accent);
-      background: var(--accent-glow);
-    }
-
-    /* ── CERTIFICATIONS ── */
-    .certs-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .cert-card {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px 18px;
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.2s ease;
-    }
-
-    .cert-card:hover {
-      border-color: rgba(56, 189, 248, 0.4);
-      background: var(--bg-card-hover);
-      transform: translateX(4px);
-    }
-
-    .cert-meta h4 {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 2px;
-    }
-
-    .cert-meta span {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    .cert-link-text {
-      font-family: var(--mono);
-      font-size: 0.76rem;
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    /* ── CONTACT ── */
-    .contact-container {
-      max-width: 680px;
-    }
-
-    .contact-lead {
-      font-size: 0.98rem;
-      color: var(--text-muted);
-      line-height: 1.75;
-      margin-bottom: 20px;
-    }
-
-    .contact-lead strong {
-      color: var(--text);
-    }
-
-    .contact-cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .contact-box {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px 16px;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .contact-box:hover {
-      border-color: var(--accent);
-      background: var(--bg-card-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-    }
-
-    .contact-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      background: rgba(56, 189, 248, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent);
-      flex-shrink: 0;
-    }
-
-    .contact-detail {
-      overflow: hidden;
-    }
-
-    .contact-type {
-      display: block;
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--text-faint);
-      margin-bottom: 2px;
-    }
-
-    .contact-val {
-      display: block;
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--text);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 24px 0;
-      text-align: center;
-    }
-
-    footer p {
-      font-size: 0.82rem;
-      color: var(--text-faint);
-    }
-
-    footer a {
-      color: var(--accent);
-    }
-
-    /* ── RESPONSIVE OVERHAUL (ALL DEVICES) ── */
-    @media (max-width: 860px) {
-      .wrap { padding: 0 20px; }
-      .hero { padding: 80px 0 20px; }
-      .section { padding: 20px 0; }
-      .journey-grid, .skills-grid, .contact-cards, .project-highlights, .os-grid, .about-pillars {
-        grid-template-columns: 1fr;
-      }
-      .os-lead { grid-column: 1; }
-      .nav-links { display: none; }
-      .mob-toggle { display: block; }
-      .nav-links.open {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 64px;
-        left: 0;
-        right: 0;
-        background: var(--bg-surface);
-        border-bottom: 1px solid var(--border);
-        padding: 16px 20px;
-        gap: 6px;
-      }
-      .project-card { padding: 20px 22px; }
-      .about-card { padding: 22px 20px; }
-    }
-
-    @media (max-width: 580px) {
-      .wrap { padding: 0 16px; }
-      .nav-bar { padding: 0 16px; height: 56px; }
-      .nav-links.open { top: 56px; }
-      .hero { padding: 74px 0 16px; }
-      .hero-title { font-size: 1.95rem; margin-bottom: 10px; }
-      .hero-subtitle { font-size: 1.1rem; margin-bottom: 14px; }
-      .hero-desc { font-size: 0.92rem; line-height: 1.6; margin-bottom: 20px; }
-      .hero-actions {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-        width: 100%;
-      }
-      .hero-actions .btn-primary {
-        grid-column: 1 / -1;
-        justify-content: center;
-        padding: 10px 16px;
-      }
-      .hero-actions .btn-secondary {
-        justify-content: center;
-        padding: 8px 10px;
-        font-size: 0.8rem;
-      }
-      .section { padding: 18px 0; }
-      .section-head { margin-bottom: 18px; }
-      .section-title { font-size: 1.5rem; }
-      .project-top {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-      .project-links {
-        width: 100%;
-        justify-content: flex-start;
-      }
-      .about-card, .project-card, .os-card { padding: 18px 16px; }
-      .badge-pill { font-size: 0.72rem; padding: 3px 8px; }
-      .contact-cards { grid-template-columns: 1fr; }
-      .contact-box { padding: 12px 14px; }
-    }
-  </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <div class="nav-bar">
-      <a href="#" class="nav-logo">
-        <span>&lt;</span>katta karthik<span>/&gt;</span>
-      </a>
-
-      <ul class="nav-links" id="navMenu">
-        <li><a href="#about"><span class="num">01.</span>About</a></li>
-        <li><a href="#opensource"><span class="num">02.</span>Open Source</a></li>
-        <li><a href="#projects"><span class="num">03.</span>Projects</a></li>
-        <li><a href="#journey"><span class="num">04.</span>Journey</a></li>
-        <li><a href="#skills"><span class="num">05.</span>Skills</a></li>
-        <li><a href="#contact"><span class="num">06.</span>Contact</a></li>
-      </ul>
-
-      <div class="nav-actions">
-        <a href="Katta_Karthik_Resume.pdf" download class="btn-resume">
-          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"/></svg>
-          Resume
-        </a>
-        <button class="mob-toggle" onclick="document.getElementById('navMenu').classList.toggle('open')" aria-label="Toggle Navigation">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        </button>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <header class="hero">
-    <div class="wrap">
-      <div class="hero-content">
-        
-        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px;">
-          <div class="status-badge" style="margin-bottom: 0;">
-            <span class="pulse-dot"></span>
-            AI Engineer · Available for Full-Time Roles
-          </div>
-          <div class="status-badge" style="margin-bottom: 0; color: var(--accent); background: rgba(56, 189, 248, 0.08); border-color: rgba(56, 189, 248, 0.25);">
-            ⚡ Upstream Contributor @ LangChain & OpenHands
-          </div>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell masthead">
+      <a class="wordmark" href="#top">Katta Karthik</a>
+      <nav aria-label="Main navigation">
+        <div class="section-links">
+          <a href="#capabilities">Expertise</a>
+          <a href="#projects">Projects</a>
+          <a href="#opensource">Open source</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
         </div>
-
-        <h1 class="hero-title">
-          Hi, I'm <span class="name-highlight">Katta Karthik</span>.
-        </h1>
-
-        <div class="hero-subtitle">
-          I build <span>autonomous AI agents</span> & contribute to <span>upstream open source</span>.
-        </div>
-
-        <p class="hero-desc">
-          Integrated M.Tech in Computer Science & Engineering from <strong>Vellore Institute of Technology</strong>. Active upstream contributor to <strong>LangChain</strong>, <strong>CopilotKit</strong>, and <strong>OpenHands</strong>. I engineer reliable, production-grade intelligence — from multi-agent research graphs to self-healing SQL analytics.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary">
-            Explore My Work
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
-          </a>
-
-          <a href="#opensource" class="btn btn-secondary">
-            ⚡ Open Source
-          </a>
-
-          <a href="Katta_Karthik_Resume.pdf" download class="btn btn-secondary">
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"/></svg>
-            Resume
-          </a>
-
-          <a href="https://github.com/katta-karthik" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" aria-label="GitHub Profile">
-            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-            GitHub
-          </a>
-
-          <a href="https://www.linkedin.com/in/katta-karthik/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" aria-label="LinkedIn Profile">
-            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-            LinkedIn
-          </a>
-
-          <a href="https://takeuforward.org/profile/karthik0712" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" aria-label="DSA Coding Profile">
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6M14 4l-4 16"/></svg>
-            DSA Profile
-          </a>
-        </div>
-
-      </div>
+        <a class="resume" href="Katta_Karthik_Resume.pdf">Résumé <span aria-hidden="true">↗</span></a>
+      </nav>
     </div>
   </header>
 
-  <!-- About Section (Structured Pillars & Balanced Density) -->
-  <section class="section" id="about">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="section-tag">01. About</div>
-        <h2 class="section-title">Background & Focus</h2>
-      </div>
-
-      <div class="about-card">
-        <div class="about-top">
-          <div>
-            <span class="about-tag">Integrated M.Tech in CSE</span>
-            <h3 class="about-title">Systems Engineering & Architectural Philosophy</h3>
-          </div>
-          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-            <span class="badge-pill">🏛️ Vellore Institute of Technology</span>
-            <span class="badge-pill">🌐 Upstream Contributor</span>
-          </div>
-        </div>
-
-        <p class="about-summary">
-          Integrated M.Tech graduate in Computer Science & Engineering from <strong>Vellore Institute of Technology</strong> specializing in autonomous multi-agent architectures and production retrieval systems. I build stateful <strong>LangGraph</strong> workflows with context isolation, dense-sparse hybrid RAG (<strong>ChromaDB + BM25 + FlashRank</strong>) for zero-hallucination citations, and self-healing SQL agents. Active upstream contributor to <strong>LangChain</strong>, <strong>CopilotKit</strong>, and <strong>OpenHands</strong>, with AI safety red-teaming experience at <a href="https://drive.google.com/file/d/1rxj9jjCBWw_k7YBBMi82YyqKfKlP5Hup/view?usp=sharing" target="_blank">Soul AI</a>.
-        </p>
-
-        <div class="about-pillars">
-          <div class="about-pillar">
-            <div class="pillar-label"><span class="highlight-bullet bullet-accent"></span>Multi-Agent Systems</div>
-            <div class="pillar-text">Stateful <strong>LangGraph</strong> graphs with isolated subagent memory and supervisor orchestration.</div>
-          </div>
-          <div class="about-pillar">
-            <div class="pillar-label"><span class="highlight-bullet bullet-emerald"></span>Production Hybrid RAG</div>
-            <div class="pillar-text"><strong>ChromaDB</strong> dense vectors + <strong>BM25</strong> keyword matching fused via Reciprocal Rank Fusion.</div>
-          </div>
-          <div class="about-pillar">
-            <div class="pillar-label"><span class="highlight-bullet bullet-violet"></span>Upstream OSS</div>
-            <div class="pillar-text">Merged PRs and runtime features shipped across <strong>LangChain</strong>, <strong>CopilotKit</strong>, and <strong>OpenHands</strong>.</div>
-          </div>
-          <div class="about-pillar">
-            <div class="pillar-label"><span class="highlight-bullet bullet-amber"></span>Safety & Reliability</div>
-            <div class="pillar-text">Adversarial red-teaming (Soul AI), prompt injection defense, and self-healing SQL loops.</div>
-          </div>
+  <main id="main" tabindex="-1">
+    <section class="shell hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="label identity">AI Agent Engineer</p>
+        <h1 id="hero-title">Hi, I’m <em>Katta Karthik.</em></h1>
+        <p class="intro">I specialize in autonomous, self-improving AI agents. I build systems that work 24/7, communicate with each other, and coordinate as a team to complete complex tasks—from the first prototype through deployment and ongoing improvement.</p>
+        <p class="hero-stack">LangChain · LangGraph · Deep Agents</p>
+        <div class="hero-actions">
+          <a class="primary" href="#projects">Explore my projects <span aria-hidden="true">↓</span></a>
+          <a class="text-link" href="Katta_Karthik_Resume.pdf">View my résumé ↗</a>
         </div>
       </div>
-    </div>
-  </section>
+      <figure class="agent-scene" aria-label="An animated illustration of a task arriving, three AI agents collaborating, and a completed result. The cycle repeats around the clock.">
+        <div class="scene-header"><span><i></i> Agents at work</span><span>24/7</span></div>
+        <div class="scene-stage" aria-hidden="true">
+          <div class="task-ticket"><span class="ticket-icon">≡</span><span>New task</span><i></i><i></i></div>
+          <div class="inbound"><b></b></div>
+          <div class="agent-hub"><span class="bot-face"><i></i><i></i></span><small>Lead agent</small></div>
+          <div class="branch branch-left"><b></b></div>
+          <div class="branch branch-middle"><b></b></div>
+          <div class="branch branch-right"><b></b></div>
+          <div class="worker worker-one"><span class="bot-face"><i></i><i></i></span><small>Research</small><span class="work-dots">•••</span></div>
+          <div class="worker worker-two"><span class="bot-face"><i></i><i></i></span><small>Build</small><span class="work-dots">•••</span></div>
+          <div class="worker worker-three"><span class="bot-face"><i></i><i></i></span><small>Review</small><span class="work-dots">•••</span></div>
+          <div class="collaboration-wire exchange-left"><b></b></div>
+          <div class="collaboration-wire exchange-right"><b></b></div>
+          <div class="result-wire"><b></b></div>
+          <div class="result-ticket"><span class="result-check">✓</span><span>Task complete</span><span class="result-lines"><i></i><i></i></span></div>
+        </div>
+        <button class="scene-motion" type="button" aria-label="Pause animation" hidden>Ⅱ</button>
+      </figure>
+    </section>
 
-  <!-- Open Source Contributions Section -->
-  <section class="section" id="opensource">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="section-tag">02. Open Source</div>
-        <h2 class="section-title">Open Source Contributions</h2>
-        <p class="section-sub">Upstream pull requests and merged architectural enhancements in premier AI agent ecosystems.</p>
+    <section class="shell capabilities editorial-section" id="capabilities" aria-labelledby="capabilities-title">
+      <div class="section-heading">
+        <h2 id="capabilities-title">What I can build</h2>
+        <p>My focus is the full life of an agent—how it plans, works with others, handles failure, and gets better after launch.</p>
       </div>
-
-      <div class="os-grid">
-        <!-- Lead LangChain Card -->
-        <article class="os-card os-lead">
-          <div class="os-header">
-            <span class="os-repo">
-              🦜 langchain-ai / design-agent
-            </span>
-            <span class="os-badge-merged">🟣 Merged Upstream</span>
-          </div>
-          <p class="os-desc">
-            Contributed to LangChain's official generative design agent repository:
-            <br>
-            • <strong><a href="https://github.com/langchain-ai/design-agent/pull/50" target="_blank">PR #50 (Merged)</a></strong>: Added Google Gemini image models as a first-class image generation provider via <code>generateContent</code>, supporting aspect-ratio mapping, 2K resolution, and parallel generation (<strong>+456, -70</strong>).
-            <br>
-            • <strong><a href="https://github.com/langchain-ai/design-agent/pull/38" target="_blank">PR #38 (Merged)</a></strong>: Windows cross-platform timezone runtime fix (PEP 615 / <code>tzdata</code>) and POSIX stat guard in unit test suite.
-            <br>
-            • <strong><a href="https://github.com/langchain-ai/design-agent/pull/53" target="_blank">PR #53 (In Review)</a></strong>: <code>HostMediaErrorBoundary</code> middleware wrapping media and fetch tools to catch API timeouts and return clean error states without crashing agent graphs (<strong>+503, -3</strong>).
-          </p>
-          <div class="os-link-row">
-            <a href="https://github.com/langchain-ai/design-agent/pull/50" target="_blank">View Gemini PR #50 ↗</a>
-            <span style="color:var(--text-faint);">·</span>
-            <a href="https://github.com/langchain-ai/design-agent/pull/38" target="_blank">View Windows PR #38 ↗</a>
-            <span style="color:var(--text-faint);">·</span>
-            <a href="https://github.com/langchain-ai/design-agent/pull/53" target="_blank">View Error Boundary PR #53 ↗</a>
-          </div>
+      <div class="capability-grid">
+        <article>
+          <h3>24/7 autonomous agents</h3>
+          <p>Agents that start from a schedule or incoming event, plan the next steps, and use tools to finish the job. Saved progress and recovery paths help them keep working through interruptions.</p>
         </article>
-
-        <!-- CopilotKit Card -->
-        <article class="os-card os-emerald">
-          <div class="os-header">
-            <span class="os-repo">
-              🦾 CopilotKit / CopilotKit
-            </span>
-            <span class="os-badge-review">🟢 In Review · 18k+ ⭐</span>
-          </div>
-          <p class="os-desc">
-            <strong><a href="https://github.com/CopilotKit/CopilotKit/pull/8042" target="_blank">PR #8042</a></strong>: Fixed core agent lifecycle bug where aborted runs left unanswered tool calls in agent messages, preventing downstream OpenAI 400 errors. Added synthetic stopped results and cleaned dangling placeholders (<strong>+747, -16</strong>).
-          </p>
-          <div class="os-link-row">
-            <a href="https://github.com/CopilotKit/CopilotKit/pull/8042" target="_blank">View Pull Request #8042 ↗</a>
-          </div>
+        <article>
+          <h3>Multi-agent teams &amp; swarms</h3>
+          <p>Specialist agents that work in parallel, exchange findings, and hand tasks to each other. I design the orchestration so their individual work adds up to one complete result.</p>
         </article>
-
-        <!-- OpenHands Card -->
-        <article class="os-card os-accent">
-          <div class="os-header">
-            <span class="os-repo">
-              🤖 OpenHands / software-agent-sdk
-            </span>
-            <span class="os-badge-review">🟢 In Review · 45k+ ⭐</span>
-          </div>
-          <p class="os-desc">
-            <strong><a href="https://github.com/OpenHands/software-agent-sdk/pull/6292" target="_blank">PR #6292</a></strong>: Fixed unhandled Pydantic <code>extra_forbidden</code> crashes when LLMs emit variant parameter names (e.g. <code>description</code> or <code>instruction</code> instead of <code>summary</code>) with schema boundary filtering (<strong>+504, -14</strong>).
-          </p>
-          <div class="os-link-row">
-            <a href="https://github.com/OpenHands/software-agent-sdk/pull/6292" target="_blank">View Pull Request #6292 ↗</a>
-          </div>
+        <article>
+          <h3>Self-improving workflows</h3>
+          <p>Agents that use past results and feedback to propose improvements. Evaluation checks whether a change helps before it becomes part of the next run.</p>
         </article>
-
-        <!-- TerseAI Card -->
-        <article class="os-card os-violet">
-          <div class="os-header">
-            <span class="os-repo">
-              ⚡ TerseAI / durable-actors
-            </span>
-            <span class="os-badge-review">🟢 In Review</span>
-          </div>
-          <p class="os-desc">
-            <strong><a href="https://github.com/TerseAI/durable-actors/pull/400" target="_blank">PR #400</a></strong>: Architected first-class persistence adapters for LangGraph and LangChain in Python SDK (<code>DurableActorSaver</code> & <code>DurableActorChatMessageHistory</code>) with WebSocket state emission and time-travel tests (<strong>+4,532, -7</strong>).
-          </p>
-          <div class="os-link-row">
-            <a href="https://github.com/TerseAI/durable-actors/pull/400" target="_blank">View Pull Request #400 ↗</a>
-          </div>
-        </article>
-
-        <!-- Arvo-AI Card -->
-        <article class="os-card os-emerald">
-          <div class="os-header">
-            <span class="os-repo">
-              🛡️ Arvo-AI / aurora
-            </span>
-            <span class="os-badge-review">🟢 In Review</span>
-          </div>
-          <p class="os-desc">
-            <strong><a href="https://github.com/Arvo-AI/aurora/pull/758" target="_blank">PR #758</a></strong>: Resolved incident remediation suggestion status sync issues by deriving suggestion status directly from command execution results instead of chat session state (#566).
-          </p>
-          <div class="os-link-row">
-            <a href="https://github.com/Arvo-AI/aurora/pull/758" target="_blank">View Pull Request #758 ↗</a>
-          </div>
+        <article>
+          <h3>Production integration</h3>
+          <p>Connect agents to APIs, documents, databases, and business tools. Add monitoring, permissions, and human approval where the workflow needs them.</p>
         </article>
       </div>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section class="section" id="projects">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="section-tag">03. Projects</div>
-        <h2 class="section-title">Flagship Implementations</h2>
-        <p class="section-sub">Production-oriented AI systems engineered for resilience, factual grounding, and execution reliability.</p>
+    </section>
+    <section class="shell projects editorial-section" id="projects" aria-labelledby="projects-title">
+      <div class="section-heading">
+        <h2 id="projects-title">What I’ve built</h2>
       </div>
 
       <div class="project-grid">
-
-        <!-- DeepScope -->
-        <article class="project-card card-violet">
-          <div class="project-top">
-            <div>
-              <span class="project-tag tag-violet">Multi-Agent Research Architecture</span>
-              <h3 class="project-title">DeepScope</h3>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/katta-karthik/DeepScope" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn-code">
-                Source Code
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-              </a>
-            </div>
+        <article class="project" id="deepscope" aria-labelledby="deepscope-title">
+          <div class="project-heading">
+            <p class="label">Research assistant</p>
+            <h3 id="deepscope-title">DeepScope</h3>
           </div>
-          <p class="project-summary">
-            Single-pass LLM prompts degrade quickly on comprehensive research tasks due to context dilution and token bloat. <strong>DeepScope</strong> resolves this by decomposing complex inquiries across a team of specialized LangChain Deep Agents orchestrated with <strong>LangGraph</strong>.
-          </p>
-          <div class="project-highlights">
-            <div class="highlight-item"><span class="highlight-bullet bullet-violet"></span>Lead agent parses objectives and autonomously constructs structured inquiry plans.</div>
-            <div class="highlight-item"><span class="highlight-bullet bullet-violet"></span>Specialized subagents conduct web research and persist raw findings directly to disk.</div>
-            <div class="highlight-item"><span class="highlight-bullet bullet-violet"></span>Filesystem-backed context isolation prevents memory leaks and hallucination.</div>
-            <div class="highlight-item"><span class="highlight-bullet bullet-violet"></span>Dedicated fact-verifier performs gap analysis prior to synthesizing final reports.</div>
-          </div>
-          <div class="project-tech">
-            <span class="tech-pill">Python</span>
-            <span class="tech-pill">LangChain Deep Agents</span>
-            <span class="tech-pill">LangGraph</span>
-            <span class="tech-pill">FilesystemBackend</span>
-            <span class="tech-pill">TodoListMiddleware</span>
+          <div class="project-body">
+            <p>Give DeepScope a question and it writes a research report. Different assistants look into different parts of the question, then another checks what they might have missed.</p>
+            <div class="project-links"><a class="text-link" href="https://github.com/katta-karthik/DeepScope">Source code ↗</a></div>
+            <details class="project-details">
+              <summary>Technical details</summary>
+              <p class="stack">LangChain Deep Agents · LangGraph · Filesystem context</p>
+              <ol class="trace-stages">
+                <li><h4>Plan</h4><p>A lead agent breaks the research objective into questions that can be investigated independently.</p></li>
+                <li><h4>Delegate</h4><p>Specialized agents research those questions and write findings to disk, keeping bulky evidence out of the lead agent’s context.</p></li>
+                <li><h4>Verify</h4><p>A fact-verification agent checks the findings and identifies gaps before the final report is written.</p></li>
+                <li><h4>Synthesize</h4><p>The lead agent draws on the verified findings to write the report.</p></li>
+              </ol>
+            </details>
           </div>
         </article>
 
-        <!-- NexusRAG -->
-        <article class="project-card card-emerald">
-          <div class="project-top">
-            <div>
-              <span class="project-tag tag-emerald">Enterprise RAG Lifecycle</span>
-              <h3 class="project-title">NexusRAG</h3>
-            </div>
-            <div class="project-links">
-              <a href="https://nexus-doc-rag.streamlit.app/" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn-demo">
-                Live Demo ↗
-              </a>
-              <a href="https://github.com/katta-karthik/Nexus_RAG" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn-code">
-                Source Code
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-              </a>
-            </div>
+        <article class="project" id="nexusrag" aria-labelledby="nexus-title">
+          <div class="project-heading">
+            <p class="label">Document search</p>
+            <h3 id="nexus-title">NexusRAG</h3>
           </div>
-          <p class="project-summary">
-            Standard dense retrieval frequently misses critical precision tokens like IDs, numerical metrics, or specific dates. <strong>NexusRAG</strong> implements a high-performance <strong>dense + sparse hybrid retrieval platform</strong> with a visual 7-stage processing pipeline.
-          </p>
-          <div class="project-highlights">
-            <div class="highlight-item"><span class="highlight-bullet bullet-emerald"></span>Visual 7-stage ingestion: document parsing, cleaning, semantic chunking, and AI synthesis.</div>
-            <div class="highlight-item"><span class="highlight-bullet bullet-emerald"></span>ChromaDB dense vectors + BM25 keyword matching fused via Reciprocal Rank Fusion (RRF).</div>
-            <div class="highlight-item"><span class="highlight-bullet bullet-emerald"></span>FlashRank cross-encoder reranking filters false positives before LLM ingestion.</div>
-            <div class="highlight-item"><span class="highlight-bullet bullet-emerald"></span>Sub-second Groq LPU inference delivering page-level citations for every output.</div>
-          </div>
-          <div class="project-tech">
-            <span class="tech-pill">Python</span>
-            <span class="tech-pill">ChromaDB</span>
-            <span class="tech-pill">BM25</span>
-            <span class="tech-pill">FlashRank</span>
-            <span class="tech-pill">Groq LPU</span>
-            <span class="tech-pill">Streamlit</span>
+          <div class="project-body">
+            <p>Ask a question about a set of documents. NexusRAG finds the answer and shows the pages it used, so you can check for yourself.</p>
+            <div class="project-links"><a class="text-link" href="https://nexus-doc-rag.streamlit.app/">Live demo ↗</a><a class="text-link" href="https://github.com/katta-karthik/Nexus_RAG">Source code ↗</a></div>
+            <details class="project-details">
+              <summary>Technical details</summary>
+              <p class="stack">ChromaDB · BM25 · FlashRank · Groq · Streamlit</p>
+              <ol class="trace-stages">
+                <li><h4>Ingest</h4><p>Parse, clean, and split documents into semantic chunks while keeping track of their source pages.</p></li>
+                <li><h4>Retrieve</h4><p>Search ChromaDB vectors and BM25 keywords, then combine the two rankings with Reciprocal Rank Fusion.</p></li>
+                <li><h4>Rerank</h4><p>Use FlashRank to score how well candidate passages answer the question before sending them to the model.</p></li>
+                <li><h4>Cite</h4><p>Generate an answer from the retrieved context and cite the source pages so readers can check the evidence.</p></li>
+              </ol>
+            </details>
           </div>
         </article>
 
-        <!-- E-commerce AI Analytics -->
-        <article class="project-card card-amber">
-          <div class="project-top">
-            <div>
-              <span class="project-tag tag-amber">Autonomous Agentic Analytics</span>
-              <h3 class="project-title">E-commerce AI Analytics</h3>
-            </div>
-            <div class="project-links">
-              <a href="https://ecommerce-data-agent.streamlit.app/" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn-demo">
-                Live Demo ↗
-              </a>
-              <a href="https://github.com/katta-karthik/ai_agent_for_ecommerce-data" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn-code">
-                Source Code
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-              </a>
-            </div>
+        <article class="project" id="analytics" aria-labelledby="analytics-title">
+          <div class="project-heading">
+            <p class="label">Sales assistant</p>
+            <h3 id="analytics-title">E-commerce AI Analytics</h3>
           </div>
-          <p class="project-summary">
-            Traditional text-to-SQL workflows fail silently when encountering unexpected database schemas or minor SQL errors. This project introduces a <strong>stateful, self-healing agent</strong> that autonomously detects execution failures and performs real-time SQL correction.
-          </p>
-          <div class="project-highlights">
-            <div class="highlight-item"><span class="highlight-bullet bullet-amber"></span>LangGraph StateGraph managing iterative query planning, execution, and error triage.</div>
-            <div class="highlight-item"><span class="highlight-bullet bullet-amber"></span>Self-healing execution loop automatically diagnoses SQLite exceptions and rewrites queries.</div>
-            <div class="highlight-item"><span class="highlight-bullet bullet-amber"></span>Strict read-only sandbox defended against injection using Meta Prompt Guard 86M.</div>
-            <div class="highlight-item"><span class="highlight-bullet bullet-amber"></span>Autonomous chart generation and tool exposure via Model Context Protocol (MCP).</div>
-          </div>
-          <div class="project-tech">
-            <span class="tech-pill">LangGraph</span>
-            <span class="tech-pill">Google Gemini</span>
-            <span class="tech-pill">Groq LPU</span>
-            <span class="tech-pill">Meta Prompt Guard</span>
-            <span class="tech-pill">MCP</span>
-            <span class="tech-pill">Streamlit</span>
+          <div class="project-body">
+            <p>Ask a question like “What sold best last month?” The assistant checks the sales records and can show the answer in a chart. If the first attempt fails, it can fix the error and try again.</p>
+            <div class="project-links"><a class="text-link" href="https://ecommerce-data-agent.streamlit.app/">Live demo ↗</a><a class="text-link" href="https://github.com/katta-karthik/ai_agent_for_ecommerce-data">Source code ↗</a></div>
+            <details class="project-details">
+              <summary>Technical details</summary>
+              <p class="stack">LangGraph · SQLite · Gemini · Meta Prompt Guard · MCP</p>
+              <ol class="trace-stages">
+                <li><h4>Draft</h4><p>The agent translates “Show me total revenue” into a query. In this example, it assumes the sales table has a revenue column.</p></li>
+                <li><h4>Fail</h4><p>SQLite returns <code>no such column: revenue</code>. LangGraph routes that error back to the query planner.</p></li>
+                <li><h4>Repair</h4><p>The agent rewrites the query using the schema. In this example, it totals the line items using <code>SUM(quantity * unit_price)</code>.</p></li>
+                <li><h4>Return</h4><p>The revised query runs in the read-only database session. The agent can use the returned data to generate a chart.</p></li>
+              </ol>
+            </details>
           </div>
         </article>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Journey Section (Experience & Education) -->
-  <section class="section" id="journey">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="section-tag">04. Journey</div>
-        <h2 class="section-title">Experience & Education</h2>
-      </div>
-
-      <div class="journey-grid">
-        <!-- Experience -->
-        <div class="journey-col">
-          <h3>💼 Work & Open Source Experience</h3>
-
-          <div class="timeline-item">
-            <div class="timeline-period">2026 — Present</div>
-            <div class="timeline-role">Open Source Contributor</div>
-            <div class="timeline-org">
-              <a href="https://github.com/katta-karthik" target="_blank" rel="noopener noreferrer">
-                LangChain · CopilotKit · OpenHands ↗
-              </a>
-            </div>
-            <p class="timeline-text">
-              Active contributor to upstream AI agent ecosystems. Shipped merged features and core reliability fixes in <strong>langchain-ai/design-agent</strong> (Google Gemini image generation provider & Windows runtime), <strong>CopilotKit</strong> (cancellation lifecycle & tool resolution), and <strong>OpenHands</strong> (tool invocation boundary resilience).
-            </p>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-period">April 2025</div>
-            <div class="timeline-role">AI Task Contributor (Freelance)</div>
-            <div class="timeline-org">
-              <a href="https://drive.google.com/file/d/1rxj9jjCBWw_k7YBBMi82YyqKfKlP5Hup/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                Soul AI — Project Shield ↗
-              </a>
-            </div>
-            <p class="timeline-text">
-              Conducted adversarial prompt testing, red-teaming, and structured response evaluations to optimize LLM safety boundaries. Applied Human-in-the-Loop (HITL) validation guidelines to benchmark model reliability across multi-turn reasoning workflows.
-            </p>
-          </div>
+    <section class="source-section" id="opensource" aria-labelledby="source-title">
+      <div class="shell source-inner">
+        <div class="section-heading source-heading">
+          <h2 id="source-title">Open-source work</h2>
+          <a class="text-link" href="https://github.com/katta-karthik">See my GitHub <span aria-hidden="true">↗</span></a>
         </div>
+        <ul class="source-list">
+          <li><a href="https://github.com/langchain-ai/design-agent/pull/50"><span class="label">LangChain · #50 · Merged</span><strong>Image creation with Gemini</strong><span>I added a way for the design assistant to create several high-resolution images at once.</span><span class="source-arrow" aria-hidden="true">↗</span></a></li>
+          <li><a href="https://github.com/CopilotKit/CopilotKit/pull/8042"><span class="label">CopilotKit · #8042</span><strong>Stopping a task cleanly</strong><span>I proposed a fix so you can cancel an AI task and still ask a follow-up question.</span><span class="source-arrow" aria-hidden="true">↗</span></a></li>
+          <li><a href="https://github.com/OpenHands/software-agent-sdk/pull/6292"><span class="label">OpenHands · #6292</span><strong>Recovering from small mistakes</strong><span>I proposed a fix so the coding assistant can keep working when it sends unexpected information to one of its tools.</span><span class="source-arrow" aria-hidden="true">↗</span></a></li>
+        </ul>
+        <details class="more-source">
+          <summary>More changes on GitHub</summary>
+          <ul>
+            <li><a href="https://github.com/langchain-ai/design-agent/pull/38">LangChain #38 · Windows timezone compatibility ↗</a></li>
+            <li><a href="https://github.com/langchain-ai/design-agent/pull/53">LangChain #53 · Error handling for media and fetch tools ↗</a></li>
+            <li><a href="https://github.com/TerseAI/durable-actors/pull/400">Durable Actors #400 · Persistence adapters for LangGraph and LangChain ↗</a></li>
+            <li><a href="https://github.com/Arvo-AI/aurora/pull/758">Aurora #758 · Derive remediation status from execution results ↗</a></li>
+          </ul>
+        </details>
+      </div>
+    </section>
 
-        <!-- Education -->
-        <div class="journey-col">
-          <h3>🎓 Education</h3>
-
-          <div class="timeline-item">
-            <div class="timeline-period">Graduated · 2021 — 2026</div>
-            <div class="timeline-role">Integrated M.Tech in Computer Science & Engineering</div>
-            <div class="timeline-org">Vellore Institute of Technology, Amaravati</div>
-            <p class="timeline-text">Rigorous five-year integrated master's program focusing on core algorithms, deep learning, distributed computing, and autonomous AI systems.</p>
-            <span class="timeline-badge">CGPA: 8.3 / 10</span>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-period">2019 — 2021</div>
-            <div class="timeline-role">Intermediate (MPC)</div>
-            <div class="timeline-org">NRI Junior College, Ongole</div>
-            <p class="timeline-text">Specialization in Mathematics, Physics, and Chemistry.</p>
-            <span class="timeline-badge">Percentage: 97.4%</span>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-period">2019</div>
-            <div class="timeline-role">Secondary School Certificate (10th)</div>
-            <div class="timeline-org">Z.P High School, Rajampalli</div>
-            <span class="timeline-badge">CGPA: 9.7 / 10</span>
-          </div>
+    <section class="background" id="about" aria-labelledby="about-title">
+      <div class="shell editorial-section">
+        <div class="section-heading">
+          <h2 id="about-title">About me</h2>
+          <p>I’m an AI Agent Engineer and an M.Tech graduate in Computer Science and Engineering from Vellore Institute of Technology. I build teams of AI agents that can work around the clock, share findings, and pick up where they left off if something fails.</p>
+          <p>I take these systems from prototype to production with LangChain, LangGraph, and Deep Agents. I build in ways to test whether feedback leads to better results, and I contribute improvements to the open-source tools I use.</p>
+        </div>
+        <div class="background-grid">
+          <section id="journey" aria-labelledby="journey-title">
+            <h3 id="journey-title">Experience</h3>
+            <dl class="record">
+              <dt>2026–present</dt><dd><strong>Open Source Contributor</strong><p>Helped add features and fix bugs in LangChain’s design assistant.</p><a href="#opensource">See my contributions ↑</a></dd>
+              <dt>April 2025</dt><dd><strong>AI Task Contributor, Soul AI</strong><p>Tested how AI models responded to difficult requests and follow-up questions on Project Shield.</p><a href="https://drive.google.com/file/d/1rxj9jjCBWw_k7YBBMi82YyqKfKlP5Hup/view?usp=sharing">Experience certificate ↗</a></dd>
+            </dl>
+          </section>
+          <section id="skills" aria-labelledby="skills-title">
+            <h3 id="skills-title">My engineering toolkit</h3>
+            <dl class="tool-list">
+              <div><dt>Agent orchestration</dt><dd>LangChain, LangGraph, Deep Agents, and MCP.</dd></div>
+              <div><dt>Document retrieval</dt><dd>ChromaDB, BM25, and FlashRank.</dd></div>
+              <div><dt>Production engineering</dt><dd>Python, FastAPI, Docker, and GitHub Actions.</dd></div>
+            </dl>
+            <details class="credentials">
+              <summary>Certificates &amp; DSA profile</summary>
+              <ul>
+                <li><a href="https://static.takeuforward.org/certificate-dSicL1.pdf">Data Structures and Algorithms ↗</a></li>
+                <li><a href="https://www.udemy.com/certificate/UC-2e9f2e98-ea1d-4491-973a-c0f1f902d246/">Data Science, Machine Learning &amp; Deep Learning ↗</a></li>
+                <li><a href="https://www.udemy.com/certificate/UC-e668f427-ff2c-4ad2-bae1-731067820410/">Generative AI Engineering ↗</a></li>
+                <li><a href="https://takeuforward.org/profile/karthik0712">Take U Forward profile ↗</a></li>
+              </ul>
+            </details>
+          </section>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Skills Section -->
-  <section class="section" id="skills">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="section-tag">05. Skills</div>
-        <h2 class="section-title">Technical Expertise</h2>
-      </div>
-
-      <div class="skills-grid">
-        <div class="skill-card">
-          <div class="skill-card-head">
-            <h4>🤖 Agentic AI & Orchestration</h4>
-          </div>
-          <div class="skill-card-desc">Stateful architectures, tool calling, and multi-agent coordination</div>
-          <div class="skill-pill-container">
-            <span class="skill-pill">LangGraph</span>
-            <span class="skill-pill">LangChain</span>
-            <span class="skill-pill">Multi-Agent Systems</span>
-            <span class="skill-pill">Deep Agents</span>
-            <span class="skill-pill">Tool Calling</span>
-            <span class="skill-pill">Self-Healing Loops</span>
-            <span class="skill-pill">Model Context Protocol (MCP)</span>
-            <span class="skill-pill">Pydantic</span>
-          </div>
+  <footer class="contact" id="contact">
+    <div class="shell">
+      <div class="contact-main">
+        <div>
+          <h2>Let’s build your next agent.</h2>
+          <p>I’m looking for a full-time AI Agent Engineer role where I can own agent systems from design to deployment. If your team is building autonomous workflows, multi-agent systems, or tools that improve with use, let’s talk.</p>
         </div>
-
-        <div class="skill-card">
-          <div class="skill-card-head">
-            <h4>🔍 Advanced RAG & Retrieval</h4>
-          </div>
-          <div class="skill-card-desc">Dense + sparse hybrid search and grounded document QA</div>
-          <div class="skill-pill-container">
-            <span class="skill-pill">Hybrid Search</span>
-            <span class="skill-pill">BM25</span>
-            <span class="skill-pill">ChromaDB</span>
-            <span class="skill-pill">Reciprocal Rank Fusion</span>
-            <span class="skill-pill">FlashRank Reranking</span>
-            <span class="skill-pill">Vector Embeddings</span>
-            <span class="skill-pill">Semantic Chunking</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-card-head">
-            <h4>🧠 Models, Safety & Evaluation</h4>
-          </div>
-          <div class="skill-card-desc">Inference optimization, red-teaming, and guardrails</div>
-          <div class="skill-pill-container">
-            <span class="skill-pill">Meta LLaMA 3.x</span>
-            <span class="skill-pill">Google Gemini</span>
-            <span class="skill-pill">Groq LPU</span>
-            <span class="skill-pill">Meta Prompt Guard</span>
-            <span class="skill-pill">HITL Evaluation</span>
-            <span class="skill-pill">Hugging Face</span>
-            <span class="skill-pill">PyTorch</span>
-            <span class="skill-pill">Scikit-Learn</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-card-head">
-            <h4>⚙️ Software Engineering & Tools</h4>
-          </div>
-          <div class="skill-card-desc">Backend development, databases, and deployment</div>
-          <div class="skill-pill-container">
-            <span class="skill-pill">Python</span>
-            <span class="skill-pill">Java</span>
-            <span class="skill-pill">SQL</span>
-            <span class="skill-pill">FastAPI</span>
-            <span class="skill-pill">Streamlit</span>
-            <span class="skill-pill">Docker</span>
-            <span class="skill-pill">Git</span>
-            <span class="skill-pill">GitHub Actions</span>
-            <span class="skill-pill">Data Structures & Algorithms</span>
-          </div>
-        </div>
+        <a class="email-link" href="mailto:kattakarthik8008@gmail.com?subject=AI%20Agent%20Engineer%20opportunity">Email me <span aria-hidden="true">↗</span></a>
       </div>
-    </div>
-  </section>
-
-  <!-- Certifications Section -->
-  <section class="section">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="section-tag">Credentials</div>
-        <h2 class="section-title">Verified Certifications</h2>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/katta-karthik/">LinkedIn ↗</a>
+        <a href="https://github.com/katta-karthik">GitHub ↗</a>
+        <a href="tel:+918008456790">Call ↗</a>
+        <a href="Katta_Karthik_Resume.pdf">Résumé ↗</a>
+        <a class="back-top" href="#top">Back to top ↑</a>
       </div>
-
-      <div class="certs-grid">
-        <a href="https://static.takeuforward.org/certificate-dSicL1.pdf" target="_blank" rel="noopener noreferrer" class="cert-card">
-          <div class="cert-meta">
-            <h4>Data Structures and Algorithms</h4>
-            <span>Take U Forward (Striver)</span>
-          </div>
-          <div class="cert-link-text">
-            Verify Credential ↗
-          </div>
-        </a>
-
-        <a href="https://www.udemy.com/certificate/UC-2e9f2e98-ea1d-4491-973a-c0f1f902d246/" target="_blank" rel="noopener noreferrer" class="cert-card">
-          <div class="cert-meta">
-            <h4>Data Science, Machine Learning & Deep Learning</h4>
-            <span>KrishAI Technologies</span>
-          </div>
-          <div class="cert-link-text">
-            Verify Credential ↗
-          </div>
-        </a>
-
-        <a href="https://www.udemy.com/certificate/UC-e668f427-ff2c-4ad2-bae1-731067820410/" target="_blank" rel="noopener noreferrer" class="cert-card">
-          <div class="cert-meta">
-            <h4>Generative AI Engineering</h4>
-            <span>KrishAI Technologies</span>
-          </div>
-          <div class="cert-link-text">
-            Verify Credential ↗
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="section" id="contact">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="section-tag">06. Contact</div>
-        <h2 class="section-title">Let's Connect</h2>
-      </div>
-
-      <div class="contact-container">
-        <p class="contact-lead">
-          I am actively evaluating <strong>AI Engineering</strong>, <strong>Agentic AI</strong>, and <strong>Software Engineering</strong> roles. If you are building innovative AI products, have an open opportunity, or would like to discuss my projects — feel free to reach out directly.
-        </p>
-
-        <div class="contact-cards">
-          <a href="mailto:kattakarthik8008@gmail.com" class="contact-box">
-            <div class="contact-icon">
-              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </div>
-            <div class="contact-detail">
-              <span class="contact-type">Email</span>
-              <span class="contact-val">kattakarthik8008@gmail.com</span>
-            </div>
-          </a>
-
-          <a href="https://www.linkedin.com/in/katta-karthik/" target="_blank" rel="noopener noreferrer" class="contact-box">
-            <div class="contact-icon">
-              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-            </div>
-            <div class="contact-detail">
-              <span class="contact-type">LinkedIn</span>
-              <span class="contact-val">in/katta-karthik</span>
-            </div>
-          </a>
-
-          <a href="https://github.com/katta-karthik" target="_blank" rel="noopener noreferrer" class="contact-box">
-            <div class="contact-icon">
-              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-            </div>
-            <div class="contact-detail">
-              <span class="contact-type">GitHub</span>
-              <span class="contact-val">katta-karthik</span>
-            </div>
-          </a>
-
-          <a href="tel:+918008456790" class="contact-box">
-            <div class="contact-icon">
-              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            </div>
-            <div class="contact-detail">
-              <span class="contact-type">Phone</span>
-              <span class="contact-val">+91 8008456790</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="wrap" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
-      <p>
-        Crafted by <a href="https://github.com/katta-karthik" target="_blank" rel="noopener noreferrer">Katta Karthik</a> · Vellore Institute of Technology
-      </p>
-      <a href="#" style="font-family: var(--mono); font-size: 0.8rem; color: var(--text-faint);">Back to top ↑</a>
     </div>
   </footer>
-
-  <script>
-    // 1. Mobile Menu: Auto-close on navigation item click
-    const navMenu = document.getElementById('navMenu');
-    document.querySelectorAll('#navMenu a').forEach(item => {
-      item.addEventListener('click', () => {
-        if (navMenu) navMenu.classList.remove('open');
-      });
-    });
-
-    // 2. Keyboard Accessibility: Close mobile menu on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && navMenu && navMenu.classList.contains('open')) {
-        navMenu.classList.remove('open');
-      }
-    });
-
-    // 3. Scrollspy: Highlight active navigation link smoothly (Zero CPU overhead via IntersectionObserver)
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-links a');
-
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const id = entry.target.getAttribute('id');
-            navLinks.forEach(link => {
-              if (link.getAttribute('href') === `#${id}`) {
-                link.classList.add('active');
-              } else {
-                link.classList.remove('active');
-              }
-            });
-          }
-        });
-      }, {
-        rootMargin: '-20% 0px -70% 0px'
-      });
-
-      sections.forEach(section => observer.observe(section));
-    }
-  </script>
-
 </body>
 </html>
