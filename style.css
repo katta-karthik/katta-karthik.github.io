@@ -11,6 +11,10 @@
   --sans: system-ui, sans-serif;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  :root { scroll-behavior: smooth; }
+}
+
 *, *::before, *::after { box-sizing: border-box; }
 body { margin: 0; background: var(--page); color: var(--text); font: 1rem/1.6 var(--sans); }
 h1, h2, h3, h4, p, dl, dd { margin: 0; }
