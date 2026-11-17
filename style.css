@@ -149,7 +149,6 @@ details li + li { margin-top: 4px; }
 .record dd p, .tool-list dd { color: var(--muted); }
 .record a { color: var(--accent); font-size: .87rem; }
 .tool-list dt { font-weight: 650; }
-.credentials { border-top: 1px solid var(--line); padding-top: 9px; }
 
 .contact { border-bottom: 0; }
 .contact-main { display: grid; grid-template-columns: minmax(0, 1fr) auto; justify-content: space-between; align-items: end; gap: 15px; padding-block: 46px 24px; }
